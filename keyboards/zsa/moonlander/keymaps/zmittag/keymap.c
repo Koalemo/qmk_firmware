@@ -18,10 +18,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
         KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                                           KC_7,           KC_8,           KC_9,           KC_0,           KC_EQUAL,       KC_MINUS,       KC_BSPC,
-        KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           TG(1),                                          TG(1),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
-        KC_TAB,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_HYPR,                                                                        KC_MEH,         KC_H,           KC_J,           KC_K,           KC_L,           LT(2, KC_SCLN), MT(MOD_LGUI, KC_QUOTE),
-        KC_LEFT_SHIFT,  MT(MOD_LCTL, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RCTL, KC_SLASH),MT(MOD_RSFT, KC_ENTER),
-        LT(1, KC_GRAVE),CW_TOGG,        KC_TRANSPARENT, KC_LEFT,        KC_RIGHT,       MT(MOD_LALT, KC_APPLICATION),                                                                                                MT(MOD_LCTL, KC_ESCAPE),KC_UP,          KC_DOWN,        KC_LBRC,        KC_RBRC,        MO(1),
+        KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_Y,                                           TG(1),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
+        KC_TAB,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_HYPR,                                        KC_MEH,         KC_H,           KC_J,           KC_K,           KC_L,           LT(2, KC_SCLN), MT(MOD_LGUI, KC_QUOTE),
+        KC_LEFT_SHIFT,  MT(MOD_LCTL, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                                                        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RCTL, KC_SLASH),MT(MOD_RSFT, KC_ENTER),
+        LT(1, KC_GRAVE),CW_TOGG,        KC_TRANSPARENT, KC_LEFT,        KC_RIGHT,       MT(MOD_LALT, KC_APPLICATION),                                   MT(MOD_LCTL, KC_ESCAPE),KC_UP,          KC_DOWN,        KC_LBRC,        KC_RBRC,        MO(1),
         KC_SPACE,       KC_SPACE,       KC_LEFT_GUI,                    KC_LEFT_ALT,    KC_SPACE,       KC_ENTER
       ),
       [1] = LAYOUT_moonlander(
@@ -59,8 +59,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     }
 
     const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-        [0] = { {41,255,255}, {131,255,255}, {131,255,255}, {0,0,0}, {219,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {219,255,255}, {0,0,0}, {41,255,255}, {41,255,255}, {74,255,206}, {0,0,0}, {0,0,0}, {0,0,0}, {25,255,255}, {74,255,255}, {219,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {219,255,255}, {0,0,0}, {74,255,255}, {41,255,255}, {0,0,0}, {0,0,0} },
-
+        [0] = { {41,255,255}, {131,255,255}, {131,255,255}, {0,0,0},      {219,255,255}, // Escape   Tab Tab Shift  LT(1, backtick)
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 1 q a z CW_TOGGLE
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 2 w s x KC_TRANSPARENT
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 3 e d c KC_LEFT
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 4 r f v KC_RIGHT
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},                     // 5 t g b
+                 {0,0,0},     {0,0,0},       {0,0,0},                                    // 6 y KC_HYPR
+                 {41,255,255}, {41,255,255}, {74,255,206},  {0,0,0},                     // KC_SPACE, KC_SPACE, LEFT_GUI, BIGREDLEFT
+                 {0,0,0},     {0,0,0},       {25,255,255},  {74,255,255}, {219,255,255}, //
+                                                                                         // KC_BSPC KC_BSLS MT(MOD_LGUI,KC_QUOTE) MT(MOD_RSFT,KC_ENTER) MO(1)
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // - p ; / ]
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // = o l . [
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 0 i k , KC_DOW
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 9 u j m KC_UP
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},                     // 8 y h n
+                 {0,0,0},     {219,255,255}, {0,0,0},                                    // 7 TG(1) KC_MEH
+                 {74,255,255}, {41,255,255}, {0,0,0}, {0,0,0} },                         // KC_ENTER KC_SPACE KC_LEFT_ALT BIGREDRIGHT
     };
 
     void set_layer_color(int layer) {
@@ -129,6 +144,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     }
     break;
+    // Shift+Backspace -> Del
     case KC_BSPC:
         {
         // Initialize a boolean variable that keeps track
