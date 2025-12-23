@@ -5,6 +5,12 @@
 #define ZSA_SAFE_RANGE SAFE_RANGE
 #endif
 
+// colors
+#define PURP {131,255,255}
+
+// color mappimgs
+#define COL_TAB PURP
+
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
   HSV_0_245_245,
@@ -59,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     }
 
     const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-        [0] = { {41,255,255}, {131,255,255}, {131,255,255}, {0,0,0},      {219,255,255}, // Escape   Tab Tab Shift  LT(1, backtick)
+        [0] = { {41,255,255}, COL_TAB,       COL_TAB,       {0,0,0},      {219,255,255}, // Escape   Tab Tab Shift  LT(1, backtick)
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 1 q a z CW_TOGGLE
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 2 w s x KC_TRANSPARENT
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 3 e d c KC_LEFT
