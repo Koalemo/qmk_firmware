@@ -14,6 +14,7 @@
 #define BRIGHTORANGE {82,255,255}
 #define PINK {90,255,255}
 #define RED {95,255,255}
+#define ORANGE {70,255,206}
 
 
 // color mappings
@@ -24,6 +25,8 @@
 #define COL_BSPC PINK
 #define COL_CTL RED
 #define COL_ENTER BRIGHTORANGE
+#define COL_GUI ORANGE
+
 #endif
 
 enum custom_keycodes {
@@ -38,12 +41,12 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
-        KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                                           KC_7,           KC_8,           KC_9,           KC_0,           KC_EQUAL,       KC_MINUS,       KC_BSPC,
+        KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                                           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       KC_EQUAL,       KC_BSPC,
         KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_Y,                                           TG(1),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
         MT(MOD_LCTL, KC_TAB), KC_A,     KC_S,           KC_D,           KC_F,           KC_G,           KC_HYPR,                                        KC_MEH,         KC_H,           KC_J,           KC_K,           KC_L,           LT(2, KC_SCLN), MT(MOD_LGUI, KC_ENTER),
         MT(MOD_LSFT, KC_GRAVE),  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                                                        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RCTL, KC_SLASH), MT(MOD_RSFT, KC_QUOTE),
-        OSM(MOD_LCTL) ,          CW_TOGG,        KC_LEFT,        KC_RIGHT,       KC_SPACE,       MT(MOD_LALT, KC_APPLICATION),                                   MT(MOD_LCTL, KC_ESCAPE),        KC_SPACE,       KC_UP,          KC_DOWN,        KC_LBRC,        KC_RBRC,
-        KC_SPACE,       KC_SPACE,       KC_LEFT_GUI,                    KC_LEFT_ALT,    KC_SPACE,       KC_ENTER
+        OSM(MOD_LCTL) ,          CW_TOGG,        KC_LEFT,        KC_RIGHT,       MT(MOD_LGUI, KC_SPACE),       MT(MOD_LALT, KC_APPLICATION),                                   MT(MOD_LCTL, KC_ESCAPE),        KC_SPACE,       KC_UP,          KC_DOWN,        KC_LBRC,        KC_RBRC,
+        KC_LEFT_GUI,       KC_SPACE,       KC_LEFT_GUI,                    KC_LEFT_ALT,    KC_SPACE,       KC_ENTER
       ),
       [1] = LAYOUT_moonlander(
         KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
@@ -87,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      COL_SPACE,       // 4 r f v KC_SPACE
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},                     // 5 t g b
                  {0,0,0},     {0,0,0},       {0,0,0},                                    // 6 y KC_HYPR
-                 COL_SPACE, COL_SPACE, {74,255,206},  {0,0,0},                           // KC_SPACE, KC_SPACE, LEFT_GUI, BIGREDLEFT
+                 COL_GUI, COL_SPACE, COL_GUI,  {0,0,0},                           // KC_SPACE, KC_SPACE, LEFT_GUI, BIGREDLEFT
                  COL_BSPC,    {0,0,0},       COL_ENTER,     {0,0,0},      COL_MO_1,      // KC_BSPC KC_BSLS MT(MOD_LGUI,KC_ENTER) MT(MOD_RSFT,KC_QUOTE) ]
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // - p ; / [
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // = o l . KC_DOWN
