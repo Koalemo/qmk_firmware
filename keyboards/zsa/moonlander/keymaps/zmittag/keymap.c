@@ -15,6 +15,7 @@
 #define PINK {90,255,255}
 #define RED {95,255,255}
 #define ORANGE {70,255,206}
+#define BRIGHTBLUE {240,255,255}
 
 
 // color mappings
@@ -26,6 +27,7 @@
 #define COL_CTL RED
 #define COL_ENTER BRIGHTORANGE
 #define COL_GUI ORANGE
+#define COL_SHIFT BRIGHTBLUE
 
 #endif
 
@@ -43,10 +45,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
         KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                                           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       KC_EQUAL,       KC_BSPC,
         KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_Y,                                           TG(1),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
-        MT(MOD_LCTL, KC_TAB), KC_A,     KC_S,           KC_D,           KC_F,           KC_G,           KC_HYPR,                                        KC_MEH,         KC_H,           KC_J,           KC_K,           KC_L,           LT(2, KC_SCLN), MT(MOD_LGUI, KC_ENTER),
-        MT(MOD_LSFT, KC_GRAVE),  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                                                        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RCTL, KC_SLASH), MT(MOD_RSFT, KC_QUOTE),
+        MT(MOD_LCTL, KC_TAB), KC_A,     KC_S,           KC_D,           KC_F,           KC_G,           KC_HYPR,                                        KC_MEH,         KC_H,           KC_J,           KC_K,           KC_L,           LT(2, KC_SCLN), KC_QUOTE,
+        MT(MOD_LSFT, KC_GRAVE),  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                                                        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RCTL, KC_SLASH), OSM(MOD_RSFT),
         OSM(MOD_LCTL) ,          CW_TOGG,        KC_LEFT,        KC_RIGHT,       MT(MOD_LGUI, KC_SPACE),       MT(MOD_LALT, KC_APPLICATION),                                   MT(MOD_LCTL, KC_ESCAPE),        MT(MOD_LSFT, KC_SPACE),       KC_UP,          KC_DOWN,        KC_LBRC,        KC_RBRC,
-        KC_LEFT_GUI,       KC_SPACE,       KC_LEFT_GUI,                    KC_LEFT_ALT,    KC_SPACE,       KC_ENTER
+        KC_LEFT_GUI,    KC_SPACE,       KC_LEFT_GUI,                    KC_LEFT_ALT,    KC_SPACE,       KC_ENTER
       ),
       [1] = LAYOUT_moonlander(
         KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
@@ -83,22 +85,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     }
 
     const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-        [0] = { COL_ESC,      COL_TAB,       COL_CTL,       {0,0,0},      COL_CTL,      // Escape   Tab Ctrl Shift  LT(1, backtick)
+        [0] = { COL_ESC,      COL_TAB,       COL_CTL,       COL_SHIFT,      COL_CTL,     // Escape   Tab Ctrl Shift  LT(1, backtick)
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 1 q a z CW_TOGGLE
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 2 w s x KC_LEFT
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 3 e d c KC_RIGHT
-                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      COL_SPACE,       // 4 r f v KC_SPACE
+                 {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      COL_SPACE,     // 4 r f v KC_SPACE
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},                     // 5 t g b
                  {0,0,0},     {0,0,0},       {0,0,0},                                    // 6 y KC_HYPR
-                 COL_GUI, COL_SPACE, COL_GUI,  {0,0,0},                           // KC_SPACE, KC_SPACE, LEFT_GUI, BIGREDLEFT
-                 COL_BSPC,    {0,0,0},       COL_ENTER,     {0,0,0},      COL_MO_1,      // KC_BSPC KC_BSLS MT(MOD_LGUI,KC_ENTER) MT(MOD_RSFT,KC_QUOTE) ]
+                 COL_GUI, COL_SPACE, COL_GUI,  {0,0,0},                                  // KC_SPACE, KC_SPACE, LEFT_GUI, BIGREDLEFT
+                 COL_BSPC,    {0,0,0},       {0,0,0},       COL_SHIFT,    COL_MO_1,      // KC_BSPC KC_BSLS KC_QUOTE KC_RSFT]
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // - p ; / [
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // = o l . KC_DOWN
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      {0,0,0},       // 0 i k , KC_UP
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},      COL_SPACE,     // 9 u j m KC_SPACE
                  {0,0,0},     {0,0,0},       {0,0,0},       {0,0,0},                     // 8 y h n
                  {0,0,0},     COL_MO_1,      {0,0,0},                                    // 7 TG(1) KC_MEH
-                 {74,255,255}, COL_SPACE, {0,0,0}, {0,0,0} },                            // KC_ENTER KC_SPACE KC_LEFT_ALT BIGREDRIGHT
+                 COL_ENTER,   COL_SPACE, {0,0,0}, {0,0,0} },                             // ctrl KC_SPACE KC_LEFT_ALT BIGREDRIGHT
     };
 
     void set_layer_color(int layer) {
